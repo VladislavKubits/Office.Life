@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using office.life.Models;   // пространство имен моделей
+using Microsoft.EntityFrameworkCore; // пространство имен EntityFramework
 
 namespace office.life
 {
@@ -30,6 +32,15 @@ namespace office.life
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddDbContext<MobileContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+                // docker run \
+                // -e 'ACCEPT_EULA=Y' \
+                // -e 'MSSQL_SA_PASSWORD=YourSTRONG!Passw0rd' \
+                // -p 1401:1433 \
+                // -n mobilestore \
+                // -d microsoft/mssql-server-linux:2017-latest
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
