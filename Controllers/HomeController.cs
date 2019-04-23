@@ -30,5 +30,20 @@ namespace office.life.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpGet]
+        public IActionResult Buy(int id)
+        {
+            ViewBag.PhoneId = id;
+            return View();
+        }
+        [HttpPost]
+        public string Buy(Order order)
+        {
+            db.Orders.Add(order);
+            // сохраняем в бд все изменения
+            db.SaveChanges();
+            return $"Спасибо, {order.User}, за покупку!";
+        }
     }
 }
