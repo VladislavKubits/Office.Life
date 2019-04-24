@@ -45,5 +45,15 @@ namespace office.life.Controllers
             db.SaveChanges();
             return $"Спасибо, {order.User}, за покупку!";
         }
+        [ActionName("Welcome")]
+        public string Hello(string name)
+        {
+            return $"Hello, {name}";
+        }
+
+        public IActionResult Itp()
+        {
+            return Redirect("http://itp-it.com");
+        }
     }
 }

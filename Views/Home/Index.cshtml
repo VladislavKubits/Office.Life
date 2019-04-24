@@ -3,20 +3,21 @@
     ViewData["Title"] = "Каталог товаров";
 }
 <h3>Смартфоны</h3>
-<table class="table-condensed">
-    <tr>
-        <td>Модель</td>
-        <td>Производитель</td>
-        <td>Цена</td>
-        <td></td>
-    </tr>
+<div class="container">
+    <div class="row table-header">
+        <div class="col">Модель</div>
+        <div class="col">Производитель</div>
+        <div class="col">Цена</div>
+        <div class="col"></div>
+    </div>
+    <hr />
     @foreach (var phone in Model)
             {
-        <tr>
-            <td>@phone.Name</td>
-            <td>@phone.Company</td>
-            <td>@phone.Price</td>
-            <td><a href="~/Home/Buy/@phone.Id">Купить</a></td>
-        </tr>
+        <div class="row">
+            <div class="col">@phone.Name</div>
+            <div class="col">@phone.Company</div>
+            <div class="col">@phone.Price</div>
+            <div class="col"><a href="~/Home/Buy/@phone.Id">Купить ></a></div>
+        </div>
     }
-</table>
+</div>
